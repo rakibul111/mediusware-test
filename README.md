@@ -1,3 +1,11 @@
+## Database Edit ##
+I have slightly edited database field name in product_variant_prices:
+1. product_variant_one to product_variant_1
+2. product_variant_two to product_variant_2
+3. product_variant_three to product_variant_3
+
+so, please migrate or import the database.
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
