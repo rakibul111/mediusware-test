@@ -27,7 +27,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('product', 'ProductController1');
     Route::post('product/search', 'ProductController1@search')->name('search');
     Route::post('product-update/{product}', 'ProductController1@update');
-    Route::post('product-variants', 'ProductController1@productVariants');
     Route::resource('blog', 'BlogController');
     Route::resource('blog-category', 'BlogCategoryController');
 });

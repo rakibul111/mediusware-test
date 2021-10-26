@@ -2,9 +2,6 @@
     <section>
         <div v-if="this.success" class="alert alert-success alert-dismissible fade show" role="alert">
             Product Created successfully.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
         </div>
         <div class="row">
             <div class="col-md-6">
@@ -236,8 +233,12 @@ export default {
 
             axios.post('/product', product).then(response => {
                 this.success = true;
+                setTimeout(() => {
+                    this.success = false;
+                }, 3000);
                 console.log(response.data);
             }).catch(error => {
+                this.success = false;
                 console.log(error);
             })
         },
@@ -245,6 +246,6 @@ export default {
     },
     mounted() {
         console.log('Component mounted.')
-    }
+    },  
 }
 </script>

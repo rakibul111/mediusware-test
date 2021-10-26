@@ -2,9 +2,6 @@
     <section>
         <div v-if="this.success" class="alert alert-success alert-dismissible fade show" role="alert">
             Product updated successfully.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
         </div>
         <div class="row" id>
             <div class="col-md-6">
@@ -217,13 +214,16 @@ export default {
                 product.append('product_variant_prices[]', JSON.stringify(this.product_variant_prices[x]));
             }
             // Display the key/value pairs
-            for (var pair of product.entries()) {
-                console.log(pair[0]+ ', ' + pair[1]); 
-            }
+            // for (var pair of product.entries()) {
+            //     console.log(pair[0]+ ', ' + pair[1]); 
+            // }
 
             axios.post(`/product-update/${this.product.id}`, product).then(response => {
                 this.success = true;
-                console.log(response.data);
+                setTimeout(() => {
+                    this.success = false;
+                }, 3000);
+                console.log(response);
             }).catch(error => {
                 console.log(error);
             })
@@ -261,6 +261,6 @@ export default {
         this.loadProductVariant();
         this.checkVariant();
         this.loadPrices();
-    }
+    },
 }
 </script>

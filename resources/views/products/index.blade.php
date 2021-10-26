@@ -137,6 +137,3 @@
     </div>
 
 @endsection
-@section('page-scripts')
-    <script src="{{asset('js/product_variants_update.js')}}"></script>
-@endsection

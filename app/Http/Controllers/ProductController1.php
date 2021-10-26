@@ -135,7 +135,7 @@ class ProductController1 extends Controller
                 $pv_prices->save();
             }
         } catch (Exception $e) {
-            return response($e);
+            return response($e, 500);
         }
         return response('product added successfully');
     }
@@ -228,12 +228,12 @@ class ProductController1 extends Controller
                     $pv_prices[$index]->save();
                 }else{
                     for( $i=1; $i<=count($product_variant_ids); $i++){
-                        $new_pv_prices[$index]->{'product_variant_'.$i} = $product_variant_ids[$i-1];
+                        $new_pv_prices->{'product_variant_'.$i} = $product_variant_ids[$i-1];
                     }
-                    $new_pv_prices[$index]->price = $price->price;
-                    $new_pv_prices[$index]->stock = $price->stock;
-                    $new_pv_prices[$index]->product_id = $p_id;
-                    $new_pv_prices[$index]->save();
+                    $new_pv_prices->price = $price->price;
+                    $new_pv_prices->stock = $price->stock;
+                    $new_pv_prices->product_id = $p_id;
+                    $new_pv_prices->save();
                 }
             }
             // delete previous extra combination
@@ -243,7 +243,7 @@ class ProductController1 extends Controller
 
 
         } catch (Exception $e) {
-            return response($e);
+            return response($e->getMessage(), 422);
         }
     }
 
